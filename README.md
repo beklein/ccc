@@ -1,8 +1,8 @@
 # Context Carbon Copy (CCC)
 
-Context Carbon Copy (CCC) is a tool for copying text from multiple files into your clipboard to be then used as context for AI models when using the web interface.
+Context Carbon Copy (CCC) is a tool for copying text from multiple files and directories into your clipboard to be then used as context for AI models when using the web interface.
 
-This works well for models like OpenAI's o1, where no direct API access is available and you have to use their website.
+In contrast to other tools, this one uses a `.ccc` file, a config file that defines files that should be used as context.
 
 ## Installation
 
@@ -21,14 +21,13 @@ Examples:
 # This is a comment
 some_file.xyz
 src/*.go
-docs
 README.md
 ```
 
 Run the tool:
 
 ```bash
-./ccc
+ccc
 ```
 
 By default this will do the following:
@@ -36,13 +35,11 @@ By default this will do the following:
 - gathers all matched file contents
 - copies them to your system clipboard
 
-To specify an alternative config file, use:
+### Flags
 
-```bash
-./ccc -config .ccc.example
-```
-
-To print output to stdout instead of copying to the clipboard, use:
-```bash
-./ccc -o
-```
+- `-o, --output`
+  - Print output to stdout instead of copying to the clipboard.
+    - `ccc -o > out.txt`
+- `-c, --config`
+  - Specify another `.ccc` file.
+    - `ccc -config .ccc.example`
