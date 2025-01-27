@@ -8,7 +8,7 @@ import (
 	"strings"
 )
 
-// GatherFiles recursively collects all files under a directory
+// GatherFiles recursively collects all files under a directory,
 func GatherFiles(dir string) ([]string, error) {
 	var collected []string
 	err := filepath.Walk(dir, func(path string, info os.FileInfo, err error) error {
@@ -23,14 +23,14 @@ func GatherFiles(dir string) ([]string, error) {
 	return collected, err
 }
 
-// AppendFileContent opens a file, reads it, and appends its filename + content
+// AppendFileContent opens a file, reads it, and appends its filename + content.
 func AppendFileContent(builder *strings.Builder, path string) {
 	content, err := os.ReadFile(path)
 	if err != nil {
 		log.Printf("Skipping file: %s (read error: %v)\n", path, err)
 		return
 	}
-	builder.WriteString(fmt.Sprintf("# %s\n", path))
+	builder.WriteString(fmt.Sprintf("// %s\n", path))
 	builder.Write(content)
 	builder.WriteString("\n")
 }
