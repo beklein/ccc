@@ -42,4 +42,4 @@ By default this will do the following:
     - `ccc -o > out.txt`
 - `-c, --config`
   - Specify another `.ccc` file.
-    - `ccc -config .ccc.example`
+    - `ccc -c .ccc.example`
